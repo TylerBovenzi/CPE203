@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Lab 2, CSC/CPE 203</title>
+    <link rel="stylesheet" href="lab.css" type="text/css">
+</head>
+
+<body>
+<div class="container">
+    <div class="boxed">
+
+        <div class="header">  <h1>Lab 2, CSC/CPE 203 - static methods v. instance methods</h1></div>
+
+        <p>
+        <div class="header">
+            <h2>Orientation</h2>
+        </div>
+
+        <p>
+            This lab explores writing static methods versus instance methods in Java.  Both are useful ways to get something done (a computation), but as we develop more complex code, there are lots of reasons to strongly associate a computation with a specific instance of an object (associate data and computation together in one object).
+        </p>
+
+        <div class="header">
+            <h2>Objectives</h2>
+        </div>
+
+        <ul>
+            <li>To be able to write static methods that can compute the perimeter of three different types of geometric shapes (Circle, Rectangle and Polygon)(part 1)
+            <li>To be able to write instance methods to compute the perimeter of three different types of geometric shapes (part 2)
+            <li>To be able to write a static method to compare the perimeters of different objects (part 1 & 2)
+            <li>To be able to write your own test cases to create geometric shapes and test the computation of their perimeter, and the computation of comparison of their sizes (measured as perimeter) (part 1 & 2)
+        </ul>
+
+
+        <div class="header">
+            <h2>Resources</h2>
+        </div>
+
+        <p>
+            Same as the last two labs
+        </p>
+
+        <p>
+            You can get the base code from Canvas.
+        </p>
+
+        <div class="header">
+            <h2>Part 1: Classes and Overloaded Methods</h2>
+        </div>
+
+        <p>
+            In the provided <code>part1</code> subdirectory, implement the following
+            classes with these general requirements:
+        </p>
+
+        <ul>
+            <li><p>Each instance variable must be <code>private</code>.</p></li>
+            <li><p>Provide the appropriate "accessor"/"getter" methods for the
+                instance variables. (see PartOneTestCases.java for names)</p></li>
+            <li><p>You may add methods beyond those required, but any such
+                additional method must be <code>private</code>.</p></li>
+        </ul>
+
+        <p>
+            <span class="warning">Automaton Warning:</span>  You are an intelligent
+            person; you should not just mechanically apply these rules only to satisfy
+            a style checker in order to complete the lab.  Instead, consider the
+            reasons for these rules, what violating them exposes to the user/client
+            of the corresponding class, and what following them guarantees to you,
+            the implementer. If you aren't sure, ask your neighbor, they might have
+            thoughts of their own.
+        </p>
+
+        <div class="header">
+            <h3>Classes</h3>
+        </div>
+
+        <p>
+            The following assumes your two-dimensional <code>Point</code> implementation
+            from the previous lab.  Copy your <code>Point.java</code> into the working
+            directory.
+        </p>
+
+        <p>Implement these classes.</p>
+
+        <ul>
+            <li><p><code>Circle.java</code> represents a circle given a
+                <code>Point</code> center and a <code>double</code> radius.</p></li>
+            <li><p><code>Rectangle.java</code> represents an axis-aligned rectangle
+                given a <code>Point</code> top-left and a <code>Point</code>
+                bottom-right.</p></li>
+            <li><p><code>Polygon.java</code> represents a polygon given
+                <code>List&lt;Point&gt;</code> points.</p></li>
+        </ul>
+
+        <p>
+            <b>Note that as your implementation will be tested with PartOneTestCases,
+                you may want to read exactly what the expected "get" method names are!</b>
+        </p>
+
+        <div class="header">
+            <h3>Overloaded Method</h3>
+        </div>
+
+        <p>
+            Define a <code>Util</code> class with three <code>static</code>
+            <code>perimeter</code> methods.  Each such method takes, as its single
+            parameter, one of the classes defined in the previous step (i.e., there
+            is one <code>perimeter</code> method that takes a <code>Circle</code>,
+            one <code>perimeter</code> method that takes a <code>Polygon</code>,
+            etc.) and returns the perimeter of the object (as a <code>double</code>).
+        </p>
+
+        <p>
+            You can assume for now that all constructors will create correct closed
+            shapes.
+        </p>
+
+        <p>
+            A method (or methods) like <code>perimeter</code> is considered overloaded
+            since there is a separate definition for different parameter types.  This
+            is also referred to as ad-hoc polymorphism because the (theoretically)
+            <em>single</em> method is effectively defined to work with a small set of
+            parameter types, not for all parameter types (i.e., the method takes "many
+            forms", but only very specific forms are supported).  You will likely hear
+            "overloaded" much more often, but "ad-hoc polymorphism" sounds so much
+            cooler (though, admittedly, it is a bit more intimidating).
+        </p>
+
+        <p>
+            Note that to call a static method like these, you can invoke:
+            <code>
+                Util.perimeter(new Circle(new Point(0, 0), 1.0));
+            </code>
+        </p>
+
+        <p>
+            <span class="warning">Deeper Understanding:</span> How does the Java
+            implementation know which version of <code>perimeter </code> to use when the
+            method is invoked (not-so-great hint at this point, the compiler determines
+            the implementation under this scenario)?  If the answer is not apparent, then
+            think about the different method invocations and speak with those around you.
+            If the answer seems obvious, then hold on to that belief for the next few weeks
+            to see if it continues to hold.
+        </p>
+
+        <div class="header">
+            <h3>Methods in Action</h3>
+        </div>
+
+        <p>
+            Define a <code>Bigger</code> class with one
+            <code>static whichIsBigger</code> method.  This helper method will take
+            three parameters a <code>Circle, Rectangle, and Polygon</code> and will
+            return a <code>double</code> representing the largest perimeter of the
+            three objects. You will use this method to determine which is the largest
+            between:
+        </p>
+
+        <ol>
+            <li> a cirle centered at {1.0, 1.0} with radius of 2.0
+            <li> a rectangle with the corners {-1.0, 2.0} and {1.0, -1.6}
+            <li> a polygon defined by {0, 0}, {3, 1}, {1, 4}, and {-1, 4}
+        </ol>
+
+        <p>
+            You may want to test your perimeter computations first (see next section).
+        </p>
+
+        <div class="header">
+            <h3>Tests</h3>
+        </div>
+
+        <p>Yes, of course you will want to test all of these operations.  Add your
+            tests to the provided <code>PartOneTestCases.java</code> file.</p>
+
+        <p>
+            You are expected to write at least one test case for each perimeter and one
+            test case for whichIsBigger.
+            <b>That means you must demo at least 8 tests (as there are some already there for implementation details).</b>
+        </p>
+
+        <p>
+            Helper: here is an example of testing the perimeter for a polygon:<br>
+
+        <PRE>
+   @Test
+   public void testPerimPoly() {
+        List &lt; Point &gt;points = new ArrayList &lt; Point &gt;();
+        points.add(new Point(0, 0));
+        points.add(new Point(3,0));
+        points.add(new Point(0,4));
+        double d = Util.perimeter(new Polygon(points));
+        assertEquals(12.0, d, DELTA);
+   }<br>
+</PRE>
+
+        <div class="header">
+            <h2>Part 2: Methods</h2>
+        </div>
+
+        <p>Copy your files from <code>part1</code> into <code>part2</code> (you
+            will not need the test cases file from part 1).</p>
+
+        <p>The definition of <code>perimeter</code> in the first part of this
+            lab does not follow an object-oriented style.  This part of the lab
+            asks that you make a few modifications to improve the code (further
+            such improvements can come with later material).
+            <i>Don't worry this part will be easier!</i>
+        </p>
+
+        <p>
+            From <code>Util.java</code>, move each <code>perimeter</code> method
+            into the appropriate class (as a non-<code>static</code> method, i.e.,
+            instance method) corresponding to <code>perimeter</code>'s parameter.
+            The goal is that each object "knows how" to compute its own perimeter.
+            As such, <code>perimeter</code> will no longer need to take a parameter
+            (it acts on <code>this</code> which refers to ... well, there is no
+            universally accepted term for the target of <code>this</code> because
+            computer scientists are not very good at naming things or at agreeing
+            on the meaning of names/terms; you might hear "calling object", "current
+            object", "context object", "target", "callee", "referent", "object on which
+            the method was invoked" (that last one is real, and accurate, but is a sign
+            of giving up on naming)). (You can remove <code>Util.java</code> once
+            this is done).
+        </p>
+
+        <p>
+            Be sure to also copy over the <code>Bigger</code> class and revise it to
+            use your new instance methods.
+            <i>Take a moment... do you like one style over the other?</i>
+        </p>
+
+        <div class="header">
+            <h3>Tests</h3>
+        </div>
+
+        <p>Add tests to the provided <code>PartTwoTestCases.java</code> file.
+            This is where you will also be able to see the changes of having the methods defined within each class (instance methods) versus the static methods this
+            lab started with.
+            <b>Again, there should be an added test for each of the types of perimeters
+                and a test of whichIsBigger (can you challenge your neighbor with new perimeters?)</b>
+
+            <i>Again, reflect, do you like one style over the other?</i>
+        </p>
+
+        <div class="header">
+            <h2>Submission</h2>
+        </div>
+
+        <p>
+            Be sure to turn your assignment into handin by 11:59pm on the due date.  Your instructor will run additional tests on your code, which will account for the bulk of the available points for this lab. <br /><br />
+            From your part1 folder on the unix server, run:<br>
+            <code>handin klmork 203Lab2_1 *.java</code><br>
+            From your part2 folder on the unix server, run:<br>
+            <code>handin klmork 203Lab2_2 *.java</code>
+
+        <p>
+            For partial credit, turn in your assignments up to 24 hours late to:<br>
+            <code>handin klmork 203Lab2_1_Late *.java</code><br>
+            <code>handin klmork 203Lab2_2_Late *.java</code>
+        </p><br>
+        </p>
+
+
+    </div>
+</div>
+</body>
+</html>
