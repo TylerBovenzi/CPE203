@@ -5,8 +5,8 @@ public class Util {
     }
 
     public static double perimeter(Rectangle rectangle){
-        return (rectangle.getTopLeft().getX()-rectangle.getBottomRight().getX()*
-                (rectangle.getTopLeft().getY()-rectangle.getBottomRight().getY()));
+        return Math.abs((rectangle.getTopLeft().getX()-rectangle.getBottomRight().getX()*2)+
+                ((rectangle.getTopLeft().getY()-rectangle.getBottomRight().getY())*2));
     }
 
     public static double perimeter(Polygon polygon){
