@@ -16,7 +16,7 @@ public class Circle {
     }
 
     public double perimeter() {
-        return Math.PI*Math.pow(this.getRadius(),2);
+        return Math.PI*2*this.getRadius();
     }
 
 }

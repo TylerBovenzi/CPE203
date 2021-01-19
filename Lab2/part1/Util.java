@@ -1,7 +1,7 @@
 public class Util {
 
     public static double perimeter(Circle circle){
-        return Math.PI*Math.pow(circle.getRadius(),2);
+        return Math.PI*2*circle.getRadius();
     }
 
     public static double perimeter(Rectangle rectangle){

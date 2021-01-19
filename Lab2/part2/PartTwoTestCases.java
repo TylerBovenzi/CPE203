@@ -101,8 +101,8 @@ public class PartTwoTestCases
    public void testPerimeters()
            throws NoSuchMethodException
    {
-      final Circle testCircle = new Circle(new Point(0,0),2.0);
-      final double circlePerimeter = 4.0*Math.PI;
+      final Circle testCircle = new Circle(new Point(0,0),3.0);
+      final double circlePerimeter = 6.0*Math.PI;
 
       final Rectangle testRectangle = new Rectangle(new Point(0,0),new Point(3.0,2.0));
       final double rectanglePerimeter = 10.0;
