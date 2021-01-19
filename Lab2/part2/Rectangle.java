@@ -16,7 +16,7 @@ public class Rectangle {
     }
 
     public double perimeter() {
-        return Math.abs((this.getTopLeft().getX()-this.getBottomRight().getX()*2)+
-                ((this.getTopLeft().getY()-this.getBottomRight().getY())*2));
+        return (Math.abs(this.getTopLeft().getX()-this.getBottomRight().getX()*2)+
+                (Math.abs(this.getTopLeft().getY()-this.getBottomRight().getY())*2));
     }
 }
