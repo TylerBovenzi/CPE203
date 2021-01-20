@@ -117,44 +117,112 @@ public class PartOneTestCases
       }
    }
 
+
    @Test
-   public void testPerimeters()
-           throws NoSuchMethodException
+   public void testCirclePerimeter()
    {
-      final Circle testCircle = new Circle(new Point(0,0),3.0);
-      final double circlePerimeter = 6.0*Math.PI;
+      Point center = new Point(0,0);
+      double radius = 3.0;
+      Circle circle = new Circle(center, radius);
+      double expectedPerimeter = 2*radius*Math.PI;
+      assertEquals(Util.perimeter(circle), expectedPerimeter, DELTA);
+   }
 
-      final Rectangle testRectangle = new Rectangle(new Point(1,3),new Point(2,0));
-      final double rectanglePerimeter =8;
+   @Test
+   public void testCirclePerimeter2()
+   {
+      Point center = new Point(0,3);
+      double radius = 2.0;
+      Circle circle = new Circle(center, radius);
+      double expectedPerimeter = 2*radius*Math.PI;
+      assertEquals(Util.perimeter(circle), expectedPerimeter, DELTA);
+   }
 
-      List < Point >points = new ArrayList< Point >();
+   @Test
+   public void testRectanglePerimeter()
+   {
+      Point tl = new Point(1,3);
+      Point br = new Point(3,0);
+      Rectangle rectangle = new Rectangle(tl,br);
+      double expectedPerimeter = 10.0;
+      assertEquals(Util.perimeter(rectangle), expectedPerimeter, DELTA);
+   }
+
+
+   @Test
+   public void testRectanglePerimeter2()
+   {
+      Point tl = new Point(1,3);
+      Point br = new Point(5,-2);
+      Rectangle rectangle = new Rectangle(tl,br);
+      double expectedPerimeter = 18.0;
+      assertEquals(Util.perimeter(rectangle), expectedPerimeter, DELTA);
+   }
+
+   @Test
+   public void testPolygonPerimeter()
+   {
+
+      List <Point>points = new ArrayList< Point >();
       points.add(new Point(0, 0));
       points.add(new Point(3,0));
       points.add(new Point(0,4));
-      double d = Util.perimeter(new Polygon(points));
-      assertEquals(12.0, d, DELTA);
+      Polygon polygon = new Polygon(points);
+      double expectedPerimeter = 12.0;
+      assertEquals(Util.perimeter(polygon), expectedPerimeter, DELTA);
+   }
+   @Test
+   public void testPolygonPerimeter2()
+   {
 
-      assertEquals(Util.perimeter(testCircle),circlePerimeter,DELTA);
-      assertEquals(Util.perimeter(testRectangle),rectanglePerimeter,DELTA);
-
+      List <Point>points = new ArrayList< Point >();
+      points.add(new Point(0, 0));
+      points.add(new Point(12,0));
+      points.add(new Point(0,5));
+      Polygon polygon = new Polygon(points);
+      double expectedPerimeter = 30.0;
+      assertEquals(Util.perimeter(polygon), expectedPerimeter, DELTA);
    }
 
    @Test
    public void testBigger()
-           throws NoSuchMethodException
    {
-      final Circle testCircle = new Circle(new Point(0,0),2.0);
-      final double circlePerimeter = 4.0*Math.PI;
+      Point center = new Point(0,0);
+      double radius = 3.0;
+      Circle circle = new Circle(center, radius);
 
-      final Rectangle testRectangle = new Rectangle(new Point(0,0),new Point(2.0,2.0));
-      final double rectanglePerimeter = 4.0;
+      Point tl = new Point(1,3);
+      Point br = new Point(3,0);
+      Rectangle rectangle = new Rectangle(tl,br);
 
-      List < Point >points = new ArrayList< Point >();
+      List <Point>points = new ArrayList< Point >();
       points.add(new Point(0, 0));
       points.add(new Point(3,0));
       points.add(new Point(0,4));
-      Polygon testPolygon = new Polygon(points);
-      assertEquals(4*Math.PI, Bigger.whichIsBigger(testCircle,testRectangle, testPolygon), DELTA);
+      Polygon polygon = new Polygon(points);
+
+      assertEquals(6*Math.PI, Bigger.whichIsBigger(circle,rectangle, polygon), DELTA);
+
+   }
+
+   @Test
+   public void testBigger2()
+   {
+      Point center = new Point(0,1);
+      double radius = 2.0;
+      Circle circle = new Circle(center, radius);
+
+      Point tl = new Point(1,3);
+      Point br = new Point(5,-2);
+      Rectangle rectangle = new Rectangle(tl,br);
+
+      List <Point>points = new ArrayList< Point >();
+      points.add(new Point(0, 0));
+      points.add(new Point(12,0));
+      points.add(new Point(0,5));
+      Polygon polygon = new Polygon(points);
+
+      assertEquals(30.0, Bigger.whichIsBigger(circle, rectangle, polygon), DELTA);
 
    }
 }
