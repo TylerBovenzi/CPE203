@@ -124,8 +124,8 @@ public class PartOneTestCases
       final Circle testCircle = new Circle(new Point(0,0),3.0);
       final double circlePerimeter = 6.0*Math.PI;
 
-      final Rectangle testRectangle = new Rectangle(new Point(0,0),new Point(-4.29,.69));
-      final double rectanglePerimeter = 9.96;
+      final Rectangle testRectangle = new Rectangle(new Point(1,3),new Point(2,0));
+      final double rectanglePerimeter =8;
 
       List < Point >points = new ArrayList< Point >();
       points.add(new Point(0, 0));
