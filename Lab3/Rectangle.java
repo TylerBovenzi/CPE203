@@ -23,11 +23,11 @@ private Color color;
     }
 
     public double getArea() {
-        return getWidth() * getHeight();
+        return Math.abs(getWidth() * getHeight());
     }
 
     public double getPerimeter() {
-        return (2* getWidth())+(2* getHeight());
+        return Math.abs(2* getWidth())+Math.abs(2* getHeight());
     }
 
 

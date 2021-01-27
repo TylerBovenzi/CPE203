@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
+import org.w3c.dom.css.Rect;
 
 public class TestCases
 {
@@ -168,5 +169,30 @@ public class TestCases
             expectedMethodParameters.get(i));
          assertEquals(expectedMethodReturns.get(i), method.getReturnType());
       }
+   }
+
+   @Test
+   public void testRectangle(){
+      Rectangle rectangle = new Rectangle(10,15,new Point(1,1),Color.CYAN);
+      assertEquals(rectangle.getArea(),150,DELTA);
+      assertEquals(rectangle.getPerimeter(),50,DELTA);
+   }
+
+   @Test
+   public void testCircle(){
+      Circle circle = new Circle(10,new Point(1,1),Color.CYAN);
+      assertEquals(circle.getArea(),100*Math.PI,DELTA);
+      assertEquals(circle.getPerimeter(),20*Math.PI,DELTA);
+   }
+
+   @Test
+   public void testTriangle(){
+      Triangle triangle = new Triangle(
+              new Point(0,0),
+              new Point(10,0),
+              new Point(10,10),
+              Color.RED);
+      assertEquals(triangle.getArea(),50,DELTA);
+      assertEquals(triangle.getPerimeter(),10*Math.sqrt(2)+20,DELTA);
    }
 }
