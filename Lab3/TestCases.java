@@ -195,4 +195,42 @@ public class TestCases
       assertEquals(triangle.getArea(),50,DELTA);
       assertEquals(triangle.getPerimeter(),10*Math.sqrt(2)+20,DELTA);
    }
+
+   @Test
+   public void testWorkspace(){
+      Triangle triangle1 = new Triangle(
+              new Point(0,0),
+              new Point(10,0),
+              new Point(10,10),
+              Color.RED);
+
+      Triangle triangle2 = new Triangle(
+              new Point(0,0),
+              new Point(20,0),
+              new Point(10,10),
+              Color.BLUE);
+
+      Circle circle1 = new Circle(10,new Point(1,1),Color.CYAN);
+
+      Circle circle2 = new Circle(10,new Point(1,1),Color.CYAN);
+
+      Rectangle rectangle1 = new Rectangle(10,15,new Point(1,1),Color.CYAN);
+
+      Rectangle rectangle2 = new Rectangle(10,15,new Point(1,1),Color.GREEN);
+
+      WorkSpace work = new WorkSpace();
+
+      work.add(triangle1);
+      work.add(triangle2);
+      work.add(circle1);
+      work.add(circle2);
+      work.add(rectangle1);
+      work.add(rectangle2);
+
+      assertTrue(work.getShapesByColor(Color.RED).contains(triangle1));
+      assertTrue(!(work.getTriangles().contains(circle1)));
+      assertTrue(work.getCircles().get(0).equals(work.getCircles().get(1)));
+      assertTrue(!work.getRectangles().get(0).equals(work.getRectangles().get(1)));
+
+   }
 }

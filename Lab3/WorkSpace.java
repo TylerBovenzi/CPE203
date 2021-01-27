@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -48,6 +49,16 @@ public class WorkSpace {
             }
         }
         return triangles;
+    }
+
+    public List<Shape> getShapesByColor(Color color){
+        ArrayList<Shape> moreShapes = new ArrayList<>();
+        for (Shape shape: shapes){
+            if(shape.getColor().equals(color)){
+                moreShapes.add(shape);
+            }
+        }
+        return moreShapes;
     }
 
     public double getAreaOfAllShapes(){
