@@ -63,4 +63,5 @@ public class Triangle implements Shape {
         return Objects.equals(color, triangle.color) && Objects.equals(a, triangle.a) && Objects.equals(b, triangle.b) && Objects.equals(c, triangle.c);
     }
 
+
 }
