@@ -14,7 +14,7 @@ abstract class BinaryExpression implements Expression{
     @Override
     public String toString()
     {
-        return "(" + lft + " + " + rht + ")";
+        return "(" + lft + " " +operator + " " + rht + ")";
     }
 
     @Override

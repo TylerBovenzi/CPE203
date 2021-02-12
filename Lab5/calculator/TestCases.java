@@ -54,4 +54,24 @@ public class TestCases
 
       assertEquals("(x + y)", add.toString());
    }
+
+   @Test
+   public void test03_SubtractExpressionEvaluate()
+   {
+      IdentifierExpression x = new IdentifierExpression("x");
+      IdentifierExpression y = new IdentifierExpression("y");
+      SubtractExpression add = new SubtractExpression(x, y);
+
+      assertEquals(-7.5, add.evaluate(bindings), DELTA);
+   }
+
+   @Test
+   public void test04_SubtractExpressionToString()
+   {
+      IdentifierExpression x = new IdentifierExpression("x");
+      IdentifierExpression y = new IdentifierExpression("y");
+      SubtractExpression add = new SubtractExpression(x, y);
+
+      assertEquals("(x - y)", add.toString());
+   }
 }
