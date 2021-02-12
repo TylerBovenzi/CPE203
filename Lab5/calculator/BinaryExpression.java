@@ -23,5 +23,5 @@ abstract class BinaryExpression implements Expression{
         return _applyOperator(lft.evaluate(bindings),rht.evaluate(bindings));
     }
 
-    public abstract double _applyOperator(double a, double b);
+    protected abstract double _applyOperator(double a, double b);
 }

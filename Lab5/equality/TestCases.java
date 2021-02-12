@@ -55,5 +55,6 @@ public class TestCases
          LocalTime.of(9, 10), LocalTime.of(10, 0));
 
       assertNotEquals(one.hashCode(), two.hashCode());
+      System.out.println(one.hashCode().class );
    }
 }

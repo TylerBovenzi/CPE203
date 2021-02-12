@@ -6,7 +6,7 @@ class SubtractExpression extends BinaryExpression
    }
 
    @Override
-   public double _applyOperator(double a,double b) {
+   protected double _applyOperator(double a,double b) {
       return a-b;
    }
 }
